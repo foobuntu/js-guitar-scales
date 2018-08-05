@@ -1,0 +1,171 @@
+@import url('fonts.css');
+
+/*----- Reset -----*/
+
+html, body,
+div, p,
+span, a, img,
+h1, h2, h3, h4, h5, h6,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label,
+footer, header,
+nav, section,
+audio, video { margin: 0; padding: 0; border: 0; }
+
+
+html { width: 100%; height: 100%; font-family: comme, Arial, sans-serif; font-size: 10px; color: #ddd; }
+
+body { width: 100%; height: 100%; font-size: 1.6rem; overflow-y: auto; }
+
+div, p, span, a, h1, h2, h3, h4, h5, h6, ul, li { box-sizing: border-box; }
+ol, ul { display: block; list-style: none; }
+li {  display: block; list-style: none; }
+a { text-decoration: none; }
+
+/*---------------------------------------- General { ----------------------------------------*/
+body { background: #0e0e0e; }
+
+header { position: relative; height: 40px; padding: 15px; border-bottom: 1px solid #ddd; background: linear-gradient(#0e0e0e, #232323); }
+header h1 { position: absolute; bottom: 15px; }
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {  }
+
+button {
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 1.4rem;
+    color: #ddd;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    opacity: 0.4;
+    outline: none !important;
+    background: #6f6f6f;
+}
+button:hover { opacity: 1; }
+button:active,
+button:focus,
+select:active,
+select:focus { outline: none; }
+
+.clear::after { content: ''; display: block; height: 0; visibility: hidden; clear: both; }
+
+.collapser .collapserBody { display: none; }
+.collapser[data-collapsed="false"] .collapserBody { display: block; }
+.collapser[data-collapsed="true"] .collapserArrow { transform: rotate(90deg); }
+.collapserHead { margin-bottom: 10px; border-bottom: 1px solid #ddd; }
+.collapserHead > * { display: inline-block; vertical-align: middle; }
+.collapserArrow { display: inline-block; width: 20px; height: 10px;
+    background-image: url('../img/collapserArrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.collapserHead .collapserArrow { position: absolute; right: 0; bottom: 15px; }
+.collapserHead,
+.collapserBody { position: relative; }
+.collapserHead::after,
+.collapserBody::after { content: ''; display: block; height: 0; visibility: hidden; clear: both; }
+.js-collapserTgl { cursor: pointer; }
+
+/*-------------------- } General --------------------*/
+
+/*---------------------------------------- Main { ----------------------------------------*/
+main { padding: 15px; }
+main h2 {  font-size: 1.5em; }
+
+main { margin-bottom: 20px; padding: 10px; font-size: 1.8rem; }
+main section { margin-bottom: 15px; padding: 15px; border-radius: 3px; background: #181818; }
+main section:last-of-type { margin: 0; }
+
+main section .wrap { position: relative; width: 100%; padding: 15px; background: #2b2b2b; }
+
+main section .bubble { width: 30px; height: 30px; font-size: 1.4rem; text-align: center; user-select: none; border: 1px solid #ddd; border-radius: 50%; background: #154d85; }
+
+main .stringSetup { font-size: 1.4rem; }
+main .stringSetup .stringTuner { width: 100%; margin-bottom: 5px; padding: 5px; background: #4d4d4d; }
+main .stringSetup .stringTuner > div { display: inline-block; }
+main .stringSetup .stringTuner .index { margin-right: 15px; float: left; }
+main .stringSetup .stringTuner .tuner { float: left; }
+main .stringSetup .stringTuner .tuner .tunerNote {
+	display: inline-block;
+	width: 40px;
+	height: 24px;
+	margin-right: 5px;
+    opacity: 1;
+	user-select: none;
+}
+main .stringSetup .stringTuner .tuner .tunerNote[data-active="true"] { background: #154d85; }
+main .stringSetup .stringTuner .tuner .tunerNote:hover { background: #328198; }
+main .stringSetup .stringTuner .tuner .tunerNote .noteInner {  }
+main .stringSetup .stringTuner .cancelString { float: right; }
+main .stringSetup .stringTuner .cancelString:hover { background: #d85c5c; }
+main .stringSetup .btnWrap { padding: 3px; }
+main .stringSetup .btnWrap .addStringBtn { float: right; }
+main .stringSetup .btnWrap .addStringBtn:hover { background: #388638; }
+
+main .scaleSetup { margin-top: 20px; }
+main .scaleSetup > div { display: inline-block; margin-right: 20px; vertical-align: top; }
+main .scaleSetup label {  }
+main .scaleSetup label span { vertical-align: middle; }
+main .scaleSetup label select { padding: 5px; font-size: 1.4rem; color: #ddd; border: 1px solid #ddd; border-radius: 5px; background: #444; }
+main .renderScale {  }
+main .renderScale button { padding: 8px 15px; float: right; font-size: 1.8rem; border: 1px solid #ddd; }
+main .renderScale button:hover { background: #399e39; }
+main .scaleSetup .renderScale { margin-right: 0; float: right; }
+
+main .fretboardWrap {  }
+main .fretboardWrap .fretboard { width: 100%;
+    background-image: url('../img/fretboardBG.jpg');
+    background-size: cover;
+}
+main .fretboardWrap .controls { margin-top: 20px; }
+main .fretboardWrap .controls .displayAllBtn { float: right; }
+
+main .fretboard .fbRow { height: 40px; }
+main .fretboard .fbRow .fretCell { display: inline-block; position: relative; width: calc((100% - 50px) / 12); height: 40px; }
+main .fretboard .fbRow .fretCell:first-child { width: 50px; background: #2b2b2b; background-image: none !important; }
+main .fretboard .fbRow .fretCell .text { display: inline-block; position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); }
+
+main .fretboard .fbRow.stringRow {  }
+main .fretboard .fbRow.stringRow .fretCell {
+    background-image: url('../img/fretMid.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+main .fretboard .fbRow.stringRow .fretCell:first-child { border-right: 12px solid black; }
+main .fretboard .fbRow.stringRow:first-child .fretCell { background-image: url('../img/fretTop.png'); }
+main .fretboard .fbRow.stringRow:nth-last-child(2) .fretCell { background-image: url('../img/fretEnd.png'); }
+main .fretboard .fbRow.stringRow .fretCell .string { display: inline-block; position: absolute; width: 100%; height: 7px; top: 50%; left: 0; transform: translateY(-50%); background: grey; }
+main .fretboard .fbRow.stringRow .fretCell:first-child .string { display: none; }
+main .fretboard .fbRow.stringRow .fretCell .text { display: none; box-shadow: -2px 0px 5px 2px rgba(0, 0, 0, 0.7); }
+main .fretboard .fbRow.stringRow .fretCell:first-child .text { display: inline-block !important; }
+main .fretboard .fbRow.stringRow .fretCell.inScale .text { display: inline-block; }
+main .fretboard .fbRow.stringRow .fretCell.inScale .text.js-highlightTriad { background: #ad5700; }
+main .fretboard .fbRow.stringRow .fretCell.notInScale .text { width: 24px; height: 24px; font-size: 1.2rem; background: #252525; }
+main .fretboard.displayAll .fbRow.stringRow .fretCell .text { display: inline-block; }
+
+main .fretboard .fbRow.fretNumRow .fretCell { background: #2b2b2b; }
+main .fretboard .fbRow.fretNumRow .fretCell:first-child .text { display: none; }
+
+main .triadsWrap {  }
+main .triadsWrap .triadsList {  }
+main .triadsWrap .triadsList .triad { display: inline-block; margin-right: 15px; padding: 10px; text-align: center; cursor: pointer; border: 1px solid #ddd; border-radius: 3px; background: #4a4a4a; }
+main .triadsWrap .triadsList .triad:hover { box-shadow: 0 0 15px black; background: #6b6b6b; }
+main .triadsWrap .triadsList .triad:active,
+main .triadsWrap .triadsList .triad[data-shown="true"]:active { transform: scale(0.96); }
+main .triadsWrap .triadsList .triad[data-shown="true"] { transform: scale(1.04); box-shadow: 0 0 15px black; background: #6b6b6b; }
+main .triadsWrap .triadsList .triad[data-shown="true"] .bubble { background: #ad5700; }
+main .triadsWrap .triadsList .triad > div { margin-bottom: 10px; }
+main .triadsWrap .triadsList .triad > div:last-of-type { margin-bottom: 0; }
+main .triadsWrap .triadsList .triad .triadType {  }
+main .triadsWrap .triadsList .triad .triadNote {  }
+
+/*-------------------- } Main --------------------*/
