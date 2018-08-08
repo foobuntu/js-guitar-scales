@@ -48,7 +48,8 @@ button {
     outline: none !important;
     background: #6f6f6f;
 }
-button:hover { opacity: 1; }
+button:hover,
+button.activeBtn { opacity: 1; }
 button:active,
 button:focus,
 select:active,
@@ -126,7 +127,7 @@ main .fretboardWrap .fretboard { width: 100%;
     background-size: cover;
 }
 main .fretboardWrap .controls { margin-top: 20px; }
-main .fretboardWrap .controls .displayAllBtn { float: right; }
+main .fretboardWrap .controls button { margin-left: 15px; float: right; }
 
 main .fretboard .fbRow { height: 40px; }
 main .fretboard .fbRow .fretCell { display: inline-block; position: relative; width: calc((100% - 50px) / 12); height: 40px; }
@@ -146,10 +147,16 @@ main .fretboard .fbRow.stringRow:nth-last-child(2) .fretCell { background-image:
 main .fretboard .fbRow.stringRow .fretCell .string { display: inline-block; position: absolute; width: 100%; height: 7px; top: 50%; left: 0; transform: translateY(-50%); background: grey; }
 main .fretboard .fbRow.stringRow .fretCell:first-child .string { display: none; }
 main .fretboard .fbRow.stringRow .fretCell .text { display: none; box-shadow: -2px 0px 5px 2px rgba(0, 0, 0, 0.7); }
-main .fretboard .fbRow.stringRow .fretCell:first-child .text { display: inline-block !important; }
+main .fretboard .fbRow.stringRow .fretCell:first-child .text { display: inline-block; }
 main .fretboard .fbRow.stringRow .fretCell.inScale .text { display: inline-block; }
 main .fretboard .fbRow.stringRow .fretCell.inScale .text.js-highlightTriad { background: #ad5700; }
 main .fretboard .fbRow.stringRow .fretCell.notInScale .text { width: 24px; height: 24px; font-size: 1.2rem; background: #252525; }
+main .fretboard .fbRow.stringRow .fretCell.notInScale .text.overlay { display: none; }
+main .fretboard .fbRow.stringRow .fretCell.inScale.rootNote .text { width: 35px; height: 35px; line-height: 28px; font-weight: bold; border-width: 2px; }
+main .fretboard.highlightIntervals .fbRow.stringRow .fretCell.inScale.rootNote .text.overlay { background: #138a45; }
+main .fretboard.highlightIntervals .fbRow.stringRow .fretCell.inScale.thirdNote .text.overlay { background: #7a840c; }
+main .fretboard.highlightIntervals .fbRow.stringRow .fretCell.inScale.fifthNote .text.overlay { background: #af372e; }
+main .fretboard.triadIsHighlighted .fbRow.stringRow .fretCell.inScale .text.overlay { display: none; }
 main .fretboard.displayAll .fbRow.stringRow .fretCell .text { display: inline-block; }
 
 main .fretboard .fbRow.fretNumRow .fretCell { background: #2b2b2b; }

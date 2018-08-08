@@ -66,6 +66,7 @@
 						<div class="fretboard js-fretboard"></div>
 						<div class="controls clear">
 							<button type="button" class="displayAllBtn js-displayAllBtn">Show All</button>
+							<button type="button" class="highlightIntervalsBtn js-highlightIntervalsBtn">Show Root, 3rd, 5th</button>
 						</div>
 					</div>
 				</div>

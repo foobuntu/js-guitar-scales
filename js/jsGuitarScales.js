@@ -18,7 +18,8 @@
 		this.fretboard = {
 			el: document.querySelector('.js-fretboard'),
 			notesInScale: [],
-			displayAllBtn: document.querySelector('.js-displayAllBtn')
+			displayAllBtn: document.querySelector('.js-displayAllBtn'),
+			highlightIntervalsBtn: document.querySelector('.js-highlightIntervalsBtn')
 		};
 		this.triads = {
 			el: document.querySelector('.js-triadsList'),
@@ -89,6 +90,7 @@
 		this.renderScale.addEventListener('click', this.renderScaleData.bind(this));
 
 		this.fretboard.displayAllBtn.addEventListener('click', this.displayAllNotes.bind(this));
+		this.fretboard.highlightIntervalsBtn.addEventListener('click', this.highlightIntervals.bind(this));
 
 	};
 
@@ -228,7 +230,7 @@
 		}
 
 		/// render actual fretboard
-		var stringRow, stringNotes, fretCell, noteEl, stringEl, stringWidth, stringWidthMax, noteInScale;
+		var stringRow, stringNotes, fretCell, noteEl, noteOverlayEl, stringEl, stringWidth, stringWidthMax, noteInScale;
 		for (var j = 0; j < this.stringSetup.strings.length; j++) {
 			stringNotes = this.offsetArray(this.notes.data, this.stringSetup.strings[j].tune);
 			stringNotes.push(stringNotes[0]);
@@ -244,6 +246,19 @@
 				fretCell = document.createElement('span');
 				fretCell.classList.add('fretCell');
 
+				switch(stringNotes[jj].name){
+
+					case this.scale.notes[0].name:
+						fretCell.classList.add('rootNote');
+						break;
+					case this.scale.notes[2].name:
+						fretCell.classList.add('thirdNote');
+						break;
+					case this.scale.notes[4].name:
+						fretCell.classList.add('fifthNote');
+						break;
+				}
+
 				stringEl = document.createElement('span');
 				stringEl.classList.add('string');
 				stringEl.style.height = stringWidth +'px';
@@ -253,6 +268,11 @@
 				noteEl.classList.add('text', 'note', 'bubble');
 				noteEl.setAttribute('data-value', stringNotes[jj].name)
 				noteEl.innerHTML = stringNotes[jj].displayName;
+
+				noteOverlayEl = document.createElement('span');
+				noteOverlayEl.classList.add('text', 'note', 'bubble', 'overlay');
+				noteOverlayEl.setAttribute('data-value', stringNotes[jj].name)
+				noteOverlayEl.innerHTML = stringNotes[jj].displayName;
 
 				noteInScale = false;
 				for (var jjj = 0; jjj < this.scale.notes.length; jjj++) {
@@ -274,6 +294,7 @@
 
 				fretCell.appendChild(stringEl);
 				fretCell.appendChild(noteEl);
+				fretCell.appendChild(noteOverlayEl);
 
 				stringRow.appendChild(fretCell);
 			}
@@ -393,7 +414,7 @@
 		var shown = target.getAttribute('data-shown');
 
 		if (shown == 'true') {
-			//// if triad is already shown
+			/// if triad is already shown
 
 			/// undo triad highlighting
 			for (var i = 0; i < this.fretboard.notesInScale.length; i++) {
@@ -402,6 +423,8 @@
 
 			/// set triad element data-shown to false
 			target.setAttribute('data-shown', 'false');
+
+			this.fretboard.el.classList.remove('triadIsHighlighted');
 		}
 		else {
 			//// if triad is not shown
@@ -427,12 +450,22 @@
 					}
 				}
 			}
+
+			this.fretboard.el.classList.add('triadIsHighlighted');
 		}
 
 	};
 
-	JSGuitarScales.prototype.displayAllNotes = function(){
+	JSGuitarScales.prototype.displayAllNotes = function(event){
+		var btn = Utils.closest(event.target, 'button');
+		btn.classList.toggle('activeBtn');
 		this.fretboard.el.classList.toggle('displayAll');
+	};
+
+	JSGuitarScales.prototype.highlightIntervals = function(event){
+		var btn = Utils.closest(event.target, 'button');
+		btn.classList.toggle('activeBtn');
+		this.fretboard.el.classList.toggle('highlightIntervals');
 	};
 
 	namespace.JSGuitarScales = JSGuitarScales.getInstance();
