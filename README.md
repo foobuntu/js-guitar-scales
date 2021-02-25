@@ -5,4 +5,4 @@ JS Guitar Scales is a private project I started because most guitar scale calcul
 It is my attempt to keep it as lightweight as possible (no external frameworks or libraries), but still having all features for customizing the guitar setup and delivering the required information for the user.  
   
 
-## Watch the [Demo here](http://foobuntu.de/js-guitar-scales/)
+## Watch the [Demo here](https://foobuntu.com/js-guitar-scales/)
